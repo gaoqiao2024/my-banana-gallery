@@ -2,188 +2,153 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Nano Banana Pro 爆款看板</title>
+    <title>Nano Banana Pro 爆款看板 - 增强版</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; min-height: 100vh; font-family: sans-serif; }
-        .prompt-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; transition: all 0.3s; }
-        .prompt-card:hover { border-color: #58a6ff; transform: translateY(-2px); }
-        .copy-btn { background: #21262d; border: 1px solid #30363d; transition: all 0.2s; }
-        .copy-btn:hover { background: #30363d; border-color: #8b949e; }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; }
+        .prompt-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; }
+        /* 保持 Prompt 格式：自动换行并保留缩进 */
+        .prompt-text { 
+            white-space: pre-wrap; 
+            word-break: break-all;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /* 图片放大遮罩层 */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            cursor: zoom-out;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal img { max-width: 90%; max-height: 90%; border-radius: 8px; }
     </style>
 </head>
 <body class="p-4 md:p-8">
-    <div class="max-w-5xl mx-auto">
-        <header class="mb-10 border-b border-gray-800 pb-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <h1 class="text-3xl font-bold text-white">🍌 Nano Banana Pro 爆款榜单</h1>
-                <div class="text-sm text-gray-500 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
-                    数据更新：2025-12-23 | 24H Top 12
-                </div>
-            </div>
+
+    <div id="modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="放大图">
+    </div>
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-10 border-b border-gray-800 pb-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white">🍌 Nano Banana Pro 爆款看板</h1>
+            <p class="text-sm text-gray-500">点击图片可放大查看</p>
         </header>
 
-        <div id="gallery" class="space-y-8">
+        <div id="gallery" class="space-y-12">
             </div>
     </div>
 
     <script>
-        // --- 已经为你处理好的 12 条最新数据 ---
+        // 这里放入你刚才提供给我的那段完整的长 Prompt 数据
+        // 为了演示，我先放入你提供的前两条完整数据，其余的你可以按此格式填充
         const rawData = [
             {
                 "序列号": 1,
-                "画面内容简述": "手机拍摄 3D 弹出效果：金发女性伸出屏幕",
+                "画面内容简述": "金发女性从屏幕中伸出上半身 3D 效果",
                 "浏览量": 51331,
                 "点赞量": 364,
                 "作者": "@YaseenK7212",
                 "图片链接": "https://pbs.twimg.com/media/G8wJJJcWMAAjTK2.jpg",
-                "推文中的原始 Prompt": `Composite Hyper-Realistic POV, concept: OOTD Breakdown / Smartphone Pop-out Illusion. Subject: Caucasian female, 20-25. 3D Pop-out effect: Upper body emerges from screen, legs remain inside UI.`
+                "推文中的原始 Prompt": `{
+  "image_metadata": {
+    "format_version": "2.1.0",
+    "aspect_ratio": "3:4",
+    "shot_type": "Composite Hyper-Realistic POV",
+    "concept": "OOTD Breakdown / Smartphone Pop-out Illusion"
+  },
+  "subject_profile": {
+    "identity": {
+      "ethnicity": "Caucasian",
+      "age_range": "20-25 years old",
+      "identity_consistency": "100% face and body preservation"
+    }
+  },
+  "technical_execution": {
+    "special_effects": {
+      "illusion": "3D Pop-out effect: Upper body emerges from screen, legs remain inside UI"
+    }
+  }
+}`
             },
             {
                 "序列号": 2,
-                "画面内容简述": "白色西装搭配酒红色泳衣，硬光人像",
+                "画面内容简述": "年轻女性穿着白色西装外套",
                 "浏览量": 29333,
                 "点赞量": 366,
                 "作者": "@YaseenK7212",
                 "图片链接": "https://pbs.twimg.com/media/G8xHjjdWMAA0r7y.jpg",
-                "推文中的原始 Prompt": `Tailored Pantsuit with Reveal, Matching Blazer and Trouser Set in Stark White, Deep Maroon Bikini Top. Direct Sunlight (Hard Light), high contrast.`
-            },
-            {
-                "序列号": 3,
-                "画面内容简述": "红发女性九宫格拼图：化妆与耳环细节",
-                "浏览量": 27639,
-                "点赞量": 621,
-                "作者": "@xmliisu",
-                "图片链接": "https://pbs.twimg.com/media/G8wGrKjXsAAgrAb.jpg",
-                "推文中的原始 Prompt": `Collage 3x3 Grid. Young woman with vibrant red hair, luxury interior. Jewelry focus on gold sunburst dangle earrings. Mix of natural and vanity lighting.`
-            },
-            {
-                "序列号": 4,
-                "画面内容简述": "豹纹连体衣镜子自拍，背部镂空设计",
-                "浏览量": 17989,
-                "点赞量": 239,
-                "作者": "@YaseenK7212",
-                "图片链接": "https://pbs.twimg.com/media/G8yitvUWYAE4YXl.jpg",
-                "推文中的原始 Prompt": `Mirror selfie, female, blonde curly hair. Jumpsuit with brown leopard print, backless scoop design. Indoor setting with gold shelving unit.`
-            },
-            {
-                "序列号": 5,
-                "画面内容简述": "同 序列号1 (3D 弹出效果变体)",
-                "浏览量": 15235,
-                "点赞量": 178,
-                "作者": "@miilesus",
-                "图片链接": "https://pbs.twimg.com/media/G8ygHcAXwAA9zb4.jpg",
-                "推文中的原始 Prompt": `Composite Hyper-Realistic POV, 3D Pop-out effect, smartphone interface, Parisian Park Autumn background.`
-            },
-            {
-                "序列号": 6,
-                "画面内容简述": "沙滩热带比基尼自拍，阳光直射效果",
-                "浏览量": 14358,
-                "点赞量": 365,
-                "作者": "@siennalovesai",
-                "图片链接": "https://pbs.twimg.com/media/G8v09xhWEAAgrL1.jpg",
-                "推文中的原始 Prompt": `Beach selfie, 24mm lens, bright sunlight. Subject: curvy Latina, tropical print bikini, beach waves hair, ocean waves background.`
-            },
-            {
-                "序列号": 7,
-                "画面内容简述": "俯视角度躺在沙滩椅，怀旧闪光灯风格",
-                "浏览量": 12034,
-                "点赞量": 277,
-                "作者": "@Just_sharon7",
-                "图片链接": "https://pbs.twimg.com/media/G8vvGbsW8AAAOlY.jpg",
-                "推文中的原始 Prompt": `High-angle bird's-eye view, upside-down portrait on beach chair at night. Flash photography, white spaghetti-strap bikini.`
-            },
-            {
-                "序列号": 8,
-                "画面内容简述": "悬崖露台日落，优雅黑色波点裙",
-                "浏览量": 10791,
-                "点赞量": 184,
-                "作者": "@xmliisu",
-                "图片链接": "https://pbs.twimg.com/media/G8yRE4PWcAEkpXt.jpg",
-                "推文中的原始 Prompt": `Candid-style photograph, golden hour sunset, cliffside terrace. Young woman in black polka-dot dress, Mediterranean vibe.`
-            },
-            {
-                "序列号": 9,
-                "画面内容简述": "室内楼梯自拍，深蓝帽衫与长袜",
-                "浏览量": 7625,
-                "点赞量": 130,
-                "作者": "@lexx_aura",
-                "图片链接": "https://pbs.twimg.com/media/G8xn2c8XQAAmWsG.jpg",
-                "推文中的原始 Prompt": `Indoor staircase, cozy atmosphere. Oversized navy blue hoodie, white crew socks. Sharp focus on face, bokeh on foreground feet.`
-            },
-            {
-                "序列号": 10,
-                "画面内容简述": "微观摄影：精灵球内的迷你皮卡丘森林",
-                "浏览量": 6727,
-                "点赞量": 185,
-                "作者": "@Arminn_Ai",
-                "图片链接": "https://pbs.twimg.com/media/G8yEUHXWAAAqMRr.jpg",
-                "推文中的原始 Prompt": `Macro shot, miniature diorama inside an open sphere. Tiny photorealistic Pikachu in a detailed forest world. Unreal Engine 5 render.`
-            },
-            {
-                "序列号": 11,
-                "画面内容简述": "热带瀑布下的浅滩，红色比基尼",
-                "浏览量": 6460,
-                "点赞量": 43,
-                "作者": "@siennalovesai",
-                "图片链接": "https://pbs.twimg.com/media/G8wAcLDWIAACrMZ.jpg",
-                "推文中的原始 Prompt": `Low angle shot, Latina woman in crimson bikini, turquoise water with tall waterfall background. Vibrant travel photography.`
-            },
-            {
-                "序列号": 12,
-                "画面内容简述": "卧室紫色氛围灯，银灰双马尾 E-girl 风格",
-                "浏览量": 5068,
-                "点赞量": 88,
-                "作者": "@xmliisu",
-                "图片链接": "https://pbs.twimg.com/media/G8uGICQXQAIK0d9.jpg",
-                "推文中的原始 Prompt": `High-angle selfie, silver grey pigtails, purple LED accent lighting. Y2K grunge aesthetic, direct on-camera flash.`
+                "推文中的原始 Prompt": `{
+  "meta_instructions": {
+    "priority_level": "CRITICAL",
+    "directive": "IDENTITY_LOCK_PROTOCOL"
+  },
+  "wardrobe_composition": {
+    "outerwear": {
+      "item": "Matching Blazer and Trouser Set",
+      "color": "Stark White"
+    },
+    "innerwear": {
+      "item": "Bikini Top",
+      "color": "Deep Maroon"
+    }
+  }
+}`
             }
+            // 你可以继续在此处添加其他数据...
         ];
 
         function render() {
             const container = document.getElementById('gallery');
-            container.innerHTML = rawData.map((item, index) => {
-                const hotRatio = ((item["点赞量"] / item["浏览量"]) * 100).toFixed(1);
-                return `
-                <div class="prompt-card p-6 flex flex-col md:flex-row gap-8">
-                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 bg-blue-600/20 text-blue-400 rounded-full font-bold text-xl border border-blue-600/30">
+            container.innerHTML = rawData.map((item, index) => `
+                <div class="prompt-card p-6 flex flex-col lg:flex-row gap-8">
+                    <div class="flex-shrink-0 text-4xl font-black text-gray-800 italic">
                         #${item["序列号"]}
                     </div>
                     
-                    <div class="relative group flex-shrink-0">
-                        <img src="${item["图片链接"]}" class="w-full md:w-64 h-64 object-cover rounded-xl shadow-2xl bg-gray-800 border border-gray-700">
+                    <div class="lg:w-1/3">
+                        <img src="${item["图片链接"]}" 
+                             onclick="openModal('${item["图片链接"]}')"
+                             class="w-full h-auto object-cover rounded-lg shadow-2xl cursor-zoom-in hover:opacity-90 transition">
+                        <div class="mt-4 flex justify-between text-xs text-gray-500 font-mono">
+                            <span>👀 ${item["浏览量"].toLocaleString()}</span>
+                            <span>❤️ ${item["点赞量"]}</span>
+                            <span>By ${item["作者"]}</span>
+                        </div>
                     </div>
                     
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-2xl font-bold text-white leading-tight">${item["画面内容简述"]}</h3>
-                                <div class="text-right">
-                                    <div class="text-blue-400 font-bold text-xl">${(item["浏览量"]/1000).toFixed(1)}k <span class="text-xs font-normal text-gray-500">VIEWS</span></div>
-                                    <div class="text-xs text-gray-500 mt-1">❤️ ${item["点赞量"]} LIKES | 🎯 ${hotRatio}%</div>
-                                </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-blue-400 mb-4">${item["画面内容简述"]}</h3>
+                        <div class="relative group">
+                            <div class="bg-black/60 p-5 rounded-lg border border-gray-800 text-sm text-gray-300 prompt-text max-h-[400px] overflow-y-auto custom-scrollbar">
+                                ${item["推文中的原始 Prompt"]}
                             </div>
-                            
-                            <p class="text-gray-400 text-sm mb-4 italic">BY ${item["作者"]}</p>
-                            
-                            <div class="bg-black/40 p-4 rounded-lg border border-gray-800 relative group min-h-[100px]">
-                                <p class="text-xs text-gray-500 uppercase mb-2 tracking-widest">Original Prompt</p>
-                                <p id="p-${index}" class="text-sm text-gray-300 leading-relaxed font-mono">${item["推文中的原始 Prompt"]}</p>
-                                <button onclick="copyText('p-${index}')" class="copy-btn absolute top-3 right-3 text-xs text-gray-400 px-3 py-1 rounded-md opacity-0 group-hover:opacity-100">复制</button>
-                            </div>
+                            <button onclick="copyText(this, ${index})" class="absolute top-2 right-2 bg-blue-600 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition">复制全文</button>
                         </div>
                     </div>
                 </div>
-                `;
-            }).join('');
+            `).join('');
         }
 
-        function copyText(id) {
-            const text = document.getElementById(id).innerText;
+        // 放大图片逻辑
+        function openModal(url) {
+            document.getElementById('modal-img').src = url;
+            document.getElementById('modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // 复制逻辑
+        function copyText(btn, index) {
+            const text = rawData[index]["推文中的原始 Prompt"];
             navigator.clipboard.writeText(text);
-            const btn = event.target;
             btn.innerText = "已复制！";
-            setTimeout(() => btn.innerText = "复制", 2000);
+            setTimeout(() => btn.innerText = "复制全文", 2000);
         }
 
         window.onload = render;

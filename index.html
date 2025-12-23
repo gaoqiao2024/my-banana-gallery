@@ -5,170 +5,187 @@
     <title>Nano Banana Pro 爆款看板</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; min-height: 100vh; }
-        .prompt-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; }
+        body { background-color: #0d1117; color: #c9d1d9; min-height: 100vh; font-family: sans-serif; }
+        .prompt-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; transition: all 0.3s; }
+        .prompt-card:hover { border-color: #58a6ff; transform: translateY(-2px); }
+        .copy-btn { background: #21262d; border: 1px solid #30363d; transition: all 0.2s; }
+        .copy-btn:hover { background: #30363d; border-color: #8b949e; }
     </style>
 </head>
 <body class="p-4 md:p-8">
     <div class="max-w-5xl mx-auto">
-        <header class="mb-10 border-b border-gray-800 pb-6 text-center">
-            <h1 class="text-3xl font-bold text-white">🍌 Nano Banana Pro 全球爆款榜单</h1>
-            <p id="status" class="text-gray-500 mt-2">正在加载数据...</p>
+        <header class="mb-10 border-b border-gray-800 pb-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <h1 class="text-3xl font-bold text-white">🍌 Nano Banana Pro 爆款榜单</h1>
+                <div class="text-sm text-gray-500 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
+                    数据更新：2025-12-23 | 24H Top 12
+                </div>
+            </div>
         </header>
 
-        <div id="gallery" class="space-y-6">
+        <div id="gallery" class="space-y-8">
             </div>
     </div>
 
     <script>
-        // --- 每天只需要替换这里的数据 ---
+        // --- 已经为你处理好的 12 条最新数据 ---
         const rawData = [
- {
-"序列号": 1,
-"画面内容简述": "手持手机拍摄年轻金发女性从屏幕中伸出上半身的3D效果图像，标注毛衣和牛仔裤，背景秋叶公园长椅",
-"浏览量": 51331,
-"点赞量": 364,
-"作者": "@YaseenK7212",
-"图片链接": "https://pbs.twimg.com/media/G8wJJJcWMAAjTK2.jpg",
-"推文中的原始 Prompt": "{\n  "image_metadata": {\n    "format_version": "2.1.0",\n    "aspect_ratio": "3:4",\n    "shot_type": "Composite Hyper-Realistic POV",\n    "concept": "OOTD Breakdown / Smartphone Pop-out Illusion"\n  },\n  "subject_profile": {\n    "identity": {\n      "ethnicity": "Caucasian",\n      "age_range": "20-25 years old",\n      "identity_consistency": "100% face and body preservation"\n    },\n    "facial_architecture": {\n      "features": {\n        "L\n      "mouth": {\n        "expression": "Chic pout / blowing a kiss",\n        "detail": "Natural lip texture, soft sheen"\n      },\n      "makeup_style": {\n        "type": "Natural Glam",\n        "foundation": "Matte, seamless blend",\n        "details": "Subtle eyeliner, defined brows"\n      }\n    },\n    "hair_mechanics": {\n      "color": "Deep dark brown",\n      "style": "Long voluminous waves",\n      "physics": "Wind-blown effect, realistic strand separation",\n      "texture": "High-gloss shine, soft highlights"\n    },\n    "body_anatomy": {\n      "frame": "Petite, athletic-lean",\n      "waist": "Highly defined",\n      "skin_rendering": {\n        "tone": "Fair/Pale",\n        "texture": "Pore-level detail, natural imperfections, no plastic smoothing",\n        "lighting": "Soft overcast daylight occlusion"\n      }\n    }\n  },\n  "wardrobe_and_styling": {\n    "top_layer": {\n      "item": "Turtleneck sweater",\n      "color": "Mocha / Earthy Brown",\n      "material": "High-quality ribbed textile, macro knit detail"\n    },\n    "bottom_layer": {\n      "item": "Mini Skirt",\n      "color": "Dark Grey",\n      "material": "Heavy wool or denim texture"\n    },\n    "footwear": {\n      "item": "Tall Leather Boots",\n      "color": "Rich Brown",\n      "material": "Polished leather with realistic creases",\n      "location": "Displayed exclusively within the phone screen boundaries"\n    }\n  },\n  "device_and_interface": {\n    "hardware": {\n      "model": "Modern High-End Smartphone",\n      "case": "Burgundy matte finish",\n      "hand_interaction": "Held by a photographer’s hand with gold rings on fingers"\n    },\n    "software_ui": {\n      "app": "iOS Camera Interface",\n      "interactive_elements": [\n        "White circular shutter button",\n        "Selected mode: 'PHOTO' in yellow/white text",\n        "Zoom indicators and grid lines"\n      ],\n      "screen_condition": "Active OLED glow, realistic fingerprint smudges, sharp pixels"\n    },\n    "augmented_overlay": {\n      "style": "Handwritten white marker",\n      "annotations": [\n        { "text": "suede jacket", "pointer": "arrow to upper body" },\n        { "text": "leather boots", "pointer": "arrow to boots on screen" }\n      ]\n    }\n  },\n  "environment_optics": {\n    "location": "Parisian Park, Autumn",\n    "background_elements": {\n      "furniture": "Classic green metal park bench",\n      "typography": "Weathered text 'Le silence' on bench backrest",\n      "ground": "Grey gravel path with fallen orange/yellow autumn leaves"\n    },\n    "lighting_design": {\n      "source": "Natural, Overcast sky",\n      "quality": "Soft, diffused, low-contrast shadows",\n      "ambience": "Cinematic, moody, fashion-editorial"\n    }\n  },\n  "technical_execution": {\n    "optics": {\n      "lens": "35mm Macro",\n      "depth_of_field": {\n        "foreground": "Sharp (Hand, Phone, Subject)",\n        "background": "Creamy Bokeh (Park bench and trees)"\n      }\n    },\n    "special_effects": {\n      "illusion": "3D Pop-out effect: Upper body emerges from screen, legs remain inside UI",\n      "authenticity": "Zero-latency transition between screen and reality"\n    }\n  },\n  "safety_and_exclusions": {\n    "negative_prompt": [\n      "transparent glass phone",\n      "blank black screen",\n      "CGI render",\n      "anime",\n      "illustration",\n      "plastic skin texture",\n      "mirrored text",\n      "deformed hands",\n      "floating phone"\n    ]\n  }\n}"
-},
-{
-"序列号": 2,
-"画面内容简述": "年轻女性穿着白色西装外套，内搭酒红色泳衣上衣，背景白色墙壁",
-"浏览量": 29333,
-"点赞量": 366,
-"作者": "@YaseenK7212",
-"图片链接": "https://pbs.twimg.com/media/G8xHjjdWMAA0r7y.jpg",
-"推文中的原始 Prompt": "{\n  "meta_instructions": {\n    "priority_level": "CRITICAL",\n    "directive": "IDENTITY_LOCK_PROTOCOL",\n    "description": "The generation engine must prioritize maintaining the exact facial structure, features, and specific body topography of the reference image above all other prompt inputs."\n  },\n  "subject_profile": {\n    "identity_preservation": {\n      "face_lock": {\n        "status": "ACTIVE / IMMUTABLE",\n        "instruction": "100% preservation of facial features from reference input. No morphing, aging, or beautification filters applied."\n      },\n      "body_morphology_lock": {\n        "status": "ACTIVE",\n        "instruction": "Maintain specific proportions from reference: extreme hourglass silhouette with 'huge M-cup' bust volume and defined waist."\n      }\n    },\n    "pose_and_attitude": {\n      "action": "Leaning back casually against a surface",\n      "posture": "High-fashion editorial slouch, confident",\n      "gaze": "Directed towards camera"\n    },\n    "body_details": {\n      "modifications": "Visible belly button ring (silver/gemstone)"\n    }\n  },\n  "wardrobe_composition": {\n    "ensemble_type": "Tailored Pantsuit with Reveal",\n    "outerwear": {\n      "item": "Matching Blazer and Trouser Set",\n      "color": "Stark White",\n      "tailoring": "Sharp, structured tailoring",\n      "styling": "Blazer worn completely open to reveal midriff and inner layer"\n    },\n    "innerwear": {\n      "item": "Bikini Top",\n      "color": "Deep Maroon",\n      "style": "Supportive cut suitable for bust size"\n    },\n    "bottoms": {\n      "fit": "High-waisted trousers, tailored fit through hips and thighs"\n    }\n  },\n  "environmental_context": {\n    "setting": {\n      "location": "Minimalist architectural space",\n      "background_surface": "Solid pastel pink wall",\n      "texture": "Matte paint finish"\n    },\n    "lighting_conditions": {\n      "source": "Direct Sunlight (Hard Light)",\n      "characteristics": [\n        "High contrast",\n        "Sharp, defined shadows",\n        "Warm highlights on skin and white fabric",\n        "Bright daylight exposure"\n      ]\n    }\n  },\n  "photographic_execution": {\n    "genre": "Stylish Editorial Fashion Portrait",\n    "mood": "Confident, luxurious, sun-drenched",\n    "framing": "Medium-long shot to capture full outfit and pose against the wall",\n    "focus": "Sharp focus on subject, distinct separation from the flat wall background"\n  },\n  "constraints": {\n    "negative_prompt": [\n      "altering facial features",\n      "changing body proportions from reference",\n      "soft diffused lighting",\n      "studio lighting",\n      "patterned wall",\n      "closed blazer",\n      "low resolution",\n      "AI artifacts on face"\n    ]\n  }\n}"
-},
-{
-"序列号": 3,
-"画面内容简述": "年轻红发女性化妆和戴耳环的九宫格拼图，背景豪华室内",
-"浏览量": 27639,
-"点赞量": 621,
-"作者": "@xmliisu",
-"图片链接": "https://pbs.twimg.com/media/G8wGrKjXsAAgrAb.jpg",
-"推文中的原始 Prompt": "{\n  "image_composition": {\n    "type": "Collage",\n    "layout": "3x3 Grid",\n    "total_panels": 9\n  },\n  "subject_details": {\n    "appearance": "Young woman with fair skin",\n    "hair": {\n      "color": "Vibrant red",\n      "style": "Loose waves, shoulder-length, side-parted",\n      "texture": "Silky and voluminous"\n    },\n    "eyes": "Blue/Green",\n    "expression": "Varied (serious, smiling, laughing, focused)"\n  },\n  "fashion_and_style": {\n    "outfit": {\n      "garment": "Strapless corset-style dress or top",\n      "color": "Deep maroon / Berry",\n      "fabric": "Satin or Silk",\n      "details": "Ruched bodice, structural boning visible"\n    },\n    "makeup": {\n      "style": "Natural glam",\n      "features": "Glowing skin, soft blush, defined lashes, nude/pink glossy lips"\n    }\n  },\n  "jewelry_focus": {\n    "item_type": "Dangle Earrings",\n    "metal": "Gold",\n    "design_elements": [\n      "Huggie hoop base",\n      "Large sunburst/starburst main charm",\n      "Pave set crystals",\n      "Delicate hanging chains",\n      "Small star charms at ends of chains"\n    ]\n  },\n  "setting_and_environment": {\n    "location": "Luxury interior (likely a hotel suite or upscale bathroom)",\n    "key_features": [\n      "Large rectangular mirror with integrated LED lighting border",\n      "White marble countertops",\n      "Wood paneling on walls",\n      "Large floor-to-ceiling windows",\n      "Beige curtains"\n    ],\n    "lighting": "Mix of natural daylight and warm artificial vanity lighting"\n  },\n  "props_and_objects": {\n    "cosmetics": [\n      "Lip gloss tube",\n      "Mascara/Eyeliner tube",\n      "Glass perfume bottle with gold cap",\n      "Round compact powder"\n    ],\n    "tech": "Black smartphone",\n    "background_props": "Beige silk/satin fabric cloth (in flat lay)"\n  },\n  "panel_breakdown": {\n    "top_row": [\n      "Reflection in lit mirror applying makeup",\n      "Flat lay of jewelry and cosmetics on marble",\n      "Close-up putting on earring near window"\n    ],\n    "middle_row": [\n      "Extreme close-up of earring on ear",\n      "Side profile focusing on hair texture and shoulder",\n      "Waist-up portrait facing forward near window"\n    ],\n    "bottom_row": [\n      "Portrait touching hair looking away",\n      "Reflection in mirror laughing/smiling",\n      "Flat lay of earrings on folded beige silk cloth"\n    ]\n  }\n}"
-},
-{
-"序列号": 4,
-"画面内容简述": "年轻女性穿着褐色豹纹连体衣镜子自拍，后背裸露，背景金色架子",
-"浏览量": 17989,
-"点赞量": 239,
-"作者": "@YaseenK7212",
-"图片链接": "https://pbs.twimg.com/media/G8yitvUWYAE4YXl.jpg",
-"推文中的原始 Prompt": "[\n  {\n    "image_entry": {\n      "subject_information": {\n        "demographics": {\n          "gender": "Female",\n          "race": "White",\n          "hair_style": "Blonde, curly"\n        },\n        "pose_and_expression": {\n          "body_stance": "Standing, back to camera, turned slightly left",\n          "head_direction": "Looking back over left shoulder at phone",\n          "facial_gesture": "Pouting lips at phone screen",\n          "action": "Taking a mirror selfie with right hand holding phone"\n        }\n      },\n      "attire_and_styling": {\n        "garment": {\n          "type": "Jumpsuit",\n          "color_palette": "Brown with dark leopard print pattern",\n          "design_features": {\n            "back_style": "Backless, scoop design revealing upper back",\n            "fit_notes": "Figure is noticeably curvier with accented bust and rear"\n          }\n        },\n        "accessories": {\n          "held_device": {\n            "type": "Smartphone",\n            "model": "iPhone 16 Pro Max",\n            "device_color": "Silver",\n            "protective_case": {\n              "color": "Pink",\n              "pattern": "Black polka dots"\n            }\n          }\n        }\n      },\n      "environment_context": {\n        "location_type": "Indoor; likely hallway or dressing area",\n        "background_elements": {\n          "primary_furniture": {\n            "item": "Shelving unit",\n            "materials": ["Gold-colored metal", "Glass shelves", "Marble base"],\n            "description": "Tall structure located behind the subject"\n          },\n          "decor_items": [\n            {\n              "item": "Table lamp",\n              "details": "Small, with gold base and gold shade, placed on a shelf"\n            }\n          ]\n        },\n        "ambient_conditions": {\n          "lighting": "Soft, indoor illumination"\n        }\n      },\n      "compositional_details": {\n        "photography_style": "Mirror selfie",\n        "framing": "Subject captured as a reflection in a large mirror, positioned anterior to the gold shelving unit",\n        "aspect_ratio": "9:16"\n      }\n    }\n  }\n]"
-},
-{
-"序列号": 5,
-"画面内容简述": "手持手机拍摄年轻女性从屏幕中伸出上半身的3D效果图像，标注毛衣和牛仔裤，背景秋叶公园长椅",
-"浏览量": 15235,
-"点赞量": 178,
-"作者": "@miilesus",
-"图片链接": "https://pbs.twimg.com/media/G8ygHcAXwAA9zb4.jpg",
-"推文中的原始 Prompt": "{\n  "image_metadata": {\n    "format_version": "2.1.0",\n    "aspect_ratio": "3:4",\n    "shot_type": "Composite Hyper-Realistic POV",\n    "concept": "OOTD Breakdown / Smartphone Pop-out Illusion"\n  },\n  "subject_profile": {\n    "identity": {\n      "ethnicity": "Caucasian",\n      "age_range": "20-25 years old",\n      "identity_consistency": "100% face and body preservation"\n    },\n    "facial_architecture": {\n      "features": {\n        "L\n      "mouth": {\n        "expression": "Chic pout / blowing a kiss",\n        "detail": "Natural lip texture, soft sheen"\n      },\n      "makeup_style": {\n        "type": "Natural Glam",\n        "foundation": "Matte, seamless blend",\n        "details": "Subtle eyeliner, defined brows"\n      }\n    },\n    "hair_mechanics": {\n      "color": "Deep dark brown",\n      "style": "Long voluminous waves",\n      "physics": "Wind-blown effect, realistic strand separation",\n      "texture": "High-gloss shine, soft highlights"\n    },\n    "body_anatomy": {\n      "frame": "Petite, athletic-lean",\n      "waist": "Highly defined",\n      "skin_rendering": {\n        "tone": "Fair/Pale",\n        "texture": "Pore-level detail, natural imperfections, no plastic smoothing",\n        "lighting": "Soft overcast daylight occlusion"\n      }\n    }\n  },\n  "wardrobe_and_styling": {\n    "top_layer": {\n      "item": "Turtleneck sweater",\n      "color": "Mocha / Earthy Brown",\n      "material": "High-quality ribbed textile, macro knit detail"\n    },\n    "bottom_layer": {\n      "item": "Mini Skirt",\n      "color": "Dark Grey",\n      "material": "Heavy wool or denim texture"\n    },\n    "footwear": {\n      "item": "Tall Leather Boots",\n      "color": "Rich Brown",\n      "material": "Polished leather with realistic creases",\n      "location": "Displayed exclusively within the phone screen boundaries"\n    }\n  },\n  "device_and_interface": {\n    "hardware": {\n      "model": "Modern High-End Smartphone",\n      "case": "Burgundy matte finish",\n      "hand_interaction": "Held by a photographer’s hand with gold rings on fingers"\n    },\n    "software_ui": {\n      "app": "iOS Camera Interface",\n      "interactive_elements": [\n        "White circular shutter button",\n        "Selected mode: 'PHOTO' in yellow/white text",\n        "Zoom indicators and grid lines"\n      ],\n      "screen_condition": "Active OLED glow, realistic fingerprint smudges, sharp pixels"\n    },\n    "augmented_overlay": {\n      "style": "Handwritten white marker",\n      "annotations": [\n        { "text": "suede jacket", "pointer": "arrow to upper body" },\n        { "text": "leather boots", "pointer": "arrow to boots on screen" }\n      ]\n    }\n  },\n  "environment_optics": {\n    "location": "Parisian Park, Autumn",\n    "background_elements": {\n      "furniture": "Classic green metal park bench",\n      "typography": "Weathered text 'Le silence' on bench backrest",\n      "ground": "Grey gravel path with fallen orange/yellow autumn leaves"\n    },\n    "lighting_design": {\n      "source": "Natural, Overcast sky",\n      "quality": "Soft, diffused, low-contrast shadows",\n      "ambience": "Cinematic, moody, fashion-editorial"\n    }\n  },\n  "technical_execution": {\n    "optics": {\n      "lens": "35mm Macro",\n      "depth_of_field": {\n        "foreground": "Sharp (Hand, Phone, Subject)",\n        "background": "Creamy Bokeh (Park bench and trees)"\n      }\n    },\n    "special_effects": {\n      "illusion": "3D Pop-out effect: Upper body emerges from screen, legs remain inside UI",\n      "authenticity": "Zero-latency transition between screen and reality"\n    }\n  },\n  "safety_and_exclusions": {\n    "negative_prompt": [\n      "transparent glass phone",\n      "blank black screen",\n      "CGI render",\n      "anime",\n      "illustration",\n      "plastic skin texture",\n      "mirrored text",\n      "deformed hands",\n      "floating phone"\n    ]\n  }\n}"
-},
-{
-"序列号": 6,
-"画面内容简述": "年轻女性穿着热带印花比基尼在沙滩上自拍，背景海洋和浪花",
-"浏览量": 14358,
-"点赞量": 365,
-"作者": "@siennalovesai",
-"图片链接": "https://pbs.twimg.com/media/G8v09xhWEAAgrL1.jpg",
-"推文中的原始 Prompt": "{\n  "meta": {\n    "aspect_ratio": "9:16",\n    "quality": "ultra_photorealistic",\n    "resolution": "8k",\n    "camera": "smartphone front camera",\n    "lens": "24mm",\n    "style": "raw beach selfie, high realism, no over-smoothing"\n  },\n  "scene": {\n    "location": "sunny beach",\n    "setting": "sand dunes, ocean waves, seashells scattered",\n    "time": "midday",\n    "atmosphere": "relaxed, vacation bliss"\n  },\n  "lighting": {\n    "type": "bright sunlight",\n    "source": "direct sun overhead",\n    "effect": "golden tan highlights, soft shadows"\n  },\n  "camera_perspective": {\n    "pov": "we ARE her phone",\n    "angle": "slightly upward",\n    "distance": "arm-length",\n    "framing": "full body",\n    "phone_visibility": "not visible"\n  },\n  "subject": {\n    "gender": "female",\n    "age": "late 20s (clearly adult)",\n    "ethnicity": "random latina / mixed",\n    "body": {\n      "type": "curvy voluptuous",\n      "waist": "cinched",\n      "hips": "wide",\n      "ass": "plump and rounded",\n      "chest": "full and buoyant",\n      "legs": "shapely"\n    },\n    "skin": {\n      "tone": "bronzed tan",\n      "detail": "sunscreen sheen, light freckles",\n      "cheeks": "sun-kissed glow"\n    },\n    "hair": {\n      "color": "wavy brown",\n      "length": "long",\n      "style": "beach waves",\n      "behavior": "wind-tousled"\n    },\n    "face": {\n      "eyes": "hazel",\n      "expression": "playful wink",\n      "brows": "full and natural",\n      "lips": "pouty smile",\n      "vibe": "carefree fun"\n    },\n    "pose": {\n      "position": "standing in sand",\n      "hips": "cocked to side",\n      "torso": "arched back slightly",\n      "legs": "one bent",\n      "arms": {\n        "phone_hand": "extended",\n        "free_hand": "on hip"\n      }\n    },\n    "outfit": {\n      "top": {\n        "type": "bikini top",\n        "color": "tropical print",\n        "fabric": "stretchy nylon",\n        "fit": "halter style",\n        "effect": "enhancing curves"\n      },\n      "bottom": {\n        "type": "bikini bottoms",\n        "color": "matching print",\n        "fit": "cheeky cut",\n        "behavior": "sand-dusted"\n      }\n    }\n  },\n  "details": [\n    "waves crashing behind",\n    "sunglasses on head",\n    "beach towel nearby",\n    "summer vibe",\n    "travel influencer realism"\n  ]\n}"
-},
-{
-"序列号": 7,
-"画面内容简述": "年轻女性躺在沙滩椅上，手指触碰嘴唇，背景沙滩",
-"浏览量": 12034,
-"点赞量": 277,
-"作者": "@Just_sharon7",
-"图片链接": "https://pbs.twimg.com/media/G8vvGbsW8AAAOlY.jpg",
-"推文中的原始 Prompt": "{\n  "image_description": "A high-angle, top-down shot of a person lounging upside-down on a colorful beach chair at night.",\n  "composition": {\n    "perspective": "Upside-down portrait, bird's-eye view",\n    "subject_positioning": "The subject's head is at the bottom of the frame, with legs extending toward the top",\n    "lighting": "Flash photography, direct front-on light creating sharp shadows on the sand"\n  },\n  "subject_details": {\n    "hair": "Short, ash-brown bob with wispy bangs covering part of the forehead",\n    "makeup": "Dewy skin finish, glossy pink lips, and defined eyebrows",\n    "pose": "Lying flat on the back, one hand resting on the stomach, the other hand near the face with fingers touching the lips",\n    "tattoos": "A crescent moon tattoo on the collarbone with delicate script text"\n  },\n  "clothing_and_accessories": {\n    "top": "White spaghetti-strap bikini top with a blue tropical palm tree print",\n    "bottom": "Light-wash denim shorts",\n    "footwear": "Light blue rubber flip-flops",\n    "jewelry": "Gold chain necklace with a sunburst or celestial pendant"\n  },\n  "environment": {\n    "setting": "Sandy beach at night",\n    "furniture": "Vintage blue wooden folding beach chair with a multi-colored striped (rainbow) fabric seat",\n    "background": "Textured, dry sand with soft shadows"\n  },\n  "aesthetic_style": {\n    "vibe": "Summer night, casual, nostalgic, flash-heavy aesthetic",\n    "color_palette": ["Cerulean blue", "Sand beige", "Denim light blue", "Rainbow stripes", "Golden accents"]\n  }\n}"
-},
-{
-"序列号": 8,
-"画面内容简述": "年轻女性坐在椅子上双手触碰头发，背景悬崖边的海洋日落",
-"浏览量": 10791,
-"点赞量": 184,
-"作者": "@xmliisu",
-"图片链接": "https://pbs.twimg.com/media/G8yRE4PWcAEkpXt.jpg",
-"推文中的原始 Prompt": "{\n  "lighting": {\n    "mood": "romantic, warm, relaxed",\n    "type": "natural daylight",\n    "source": "sun",\n    "quality": "golden hour, soft, warm",\n    "shadows": "soft, defining facial features and dress texture",\n    "direction": "backlit, low angle from the right",\n    "highlights": "rim lighting on hair, shoulders, and railing; bright sky"\n  },\n  "background": {\n    "focus": "slightly blurred",\n    "setting": "cliffside terrace restaurant/bar overlooking the sea",\n    "time_of_day": "sunset/golden hour",\n    "key_elements": [\n      "white directors chair",\n      "metal railing",\n      "stone steps",\n      "yellow structure/umbrella",\n      "lush green foliage on cliff",\n      "buildings perched on cliffside",\n      "blue sea with gentle ripples",\n      "clear sky transitioning from blue to orange/yellow at horizon",\n      "other people in the mid-ground wearing white and light clothing"\n    ],\n    "location_vibe": "Mediterranean, upscale, scenic"\n  },\n  "typography": {\n    "style": "N/A",\n    "content": "N/A",\n    "presence": "none"\n  },\n  "composition": {\n    "framing": "center subject",\n    "shot_type": "medium close-up",\n    "orientation": "portrait",\n    "perspective": "eye-level",\n    "depth_of_field": "shallow, with focus on the woman and blurred background"\n  },\n  "color_profile": {\n    "vibrance": "vibrant",\n    "saturation": "high",\n    "white_balance": "warm",\n    "dominant_colors": [\n      "#D9C6A6",\n      "#4A3D32",\n      "#1A1A1A",\n      "#6A8E9F",\n      "#D4A017"\n    ],\n    "palette_description": "Warm golden hour light contrasting with deep blues and natural greens"\n  },\n  "technical_specs": {\n    "ISO": "low",\n    "aperture": "wide",\n    "lens_type": "wide-angle",\n    "resolution": "high",\n    "camera_type": "smartphone camera",\n    "file_format": "JPEG",\n    "shutter_speed": "fast enough to freeze motion"\n  },\n  "subject_analysis": {\n    "eyes": "dark brown, looking directly at the camera",\n    "hair": "long, dark brown, voluminous waves, slightly windswept, held by hands near head",\n    "pose": "sitting upright in a chair, upper body facing camera",\n    "clothing": "black spaghetti strap dress with white polka dots, fitted bodice",\n    "accessories": "gold bangle bracelets on both wrists, small stud earrings",\n    "main_subject": "young woman",\n    "age_estimation": "early 20s",\n    "hands_gestures": "both hands raised, touching and slightly lifting sections of hair near her temples",\n    "facial_expression": "neutral, calm, confident"\n  },\n  "artistic_elements": {\n    "mood": "relaxed, elegant, serene",\n    "style": "lifestyle photograph, candid-like",\n    "theme": "vacation, luxury, coastal living, fashion",\n    "visual_narrative": "A beautiful woman enjoying a sunset evening at a coastal location"\n  },\n  "generation_parameters": {\n    "prompt": "A candid-style photograph of a young woman with long, dark wavy hair, wearing a black polka-dot dress and gold bracelets, sitting in a director's chair on a cliffside terrace at sunset. She is looking at the camera with her hands near her hair. The background shows a restaurant with other patrons, lush green coastal cliffs, and the sea under a warm golden hour sky."\n  }\n}"
-},
-{
-"序列号": 9,
-"画面内容简述": "年轻女性坐在楼梯上穿着蓝色连帽衫，脚部特写",
-"浏览量": 7625,
-"点赞量": 130,
-"作者": "@lexx_aura",
-"图片链接": "https://pbs.twimg.com/media/G8xn2c8XQAAmWsG.jpg",
-"推文中的原始 Prompt": "{\n  "subject": {\n    "demographics": "Young woman, roughly 20s",\n    "hair": "Long, voluminous, wavy brown hair styled in a high, messy half-up ponytail with loose strands framing the face",\n    "expression": "Warm smile, looking directly at the camera, soft makeup with rosy cheeks"\n  },\n  "attire": {\n    "top": "Oversized navy blue hoodie with a white graphic logo/lettering on the center chest",\n    "bottoms": "Bare thighs visible (shorts hidden by hoodie)",\n    "footwear": "White crew socks"\n  },\n  "pose": {\n    "body_position": "Sitting centered on a staircase",\n    "legs": "Extended straight towards the camera lens, creating a foreshortened perspective",\n    "hands": "Tucked between legs or resting on thighs",\n    "orientation": "Front-facing"\n  },\n  "environment": {\n    "setting": "Indoor staircase",\n    "details": [\n      "Grey carpeted steps",\n      "White walls",\n      "Black vertical railing spindles on the left",\n      "White handrail on the right"\n    ]\n  },\n  "technical_visuals": {\n    "lighting": "Dim, warm, ambient indoor lighting; creates a cozy and slightly moody atmosphere",\n    "camera_angle": "Eye-level relative to the subject's face",\n    "focus": "Sharp focus on the face with a shallow depth of field; feet in the foreground are heavily blurred (bokeh effect)",\n    "aesthetic": "Candid, casual, cozy, warm tones"\n  }\n}"
-},
-{
-"序列号": 10,
-"画面内容简述": "微型皮卡丘在打开的精灵球内的小型森林场景中",
-"浏览量": 6727,
-"点赞量": 185,
-"作者": "@Arminn_Ai",
-"图片链接": "https://pbs.twimg.com/media/G8yEUHXWAAAqMRr.jpg",
-"推文中的原始 Prompt": "A hyper-realistic macro shot of an open or cracked open open [SPHERE OBJECT] converted into a miniature [ENVIRONMENT TYPE] diorama. Inside the sphere is a tiny, highly detailed world featuring [ENVIRONMENT DETAILS]. In the center stands a highly detailed, photorealistic miniature figure of [MAIN CHARACTER], [CLOTHING / APPEARANCE], in a [POSE / ACTION].\n[SECONDARY ELEMENTS – optional, max 1–2 items] are visible in the background. The outer shell of the sphere has a realistic [MATERIAL / TEXTURE / BRANDING].\nThe scene is resting on a blurred [BACKGROUND / SURFACE], emphasizing scale and depth. Style: macro photography, tilt-shift effect, shallow depth of field, volumetric lighting, photorealistic, cinematic, ultra-detailed, 8k render, Unreal Engine 5, Octane render, ray tracing.\nLighting: [LIGHT TYPE + MOOD].\nNegative prompt: cartoon, illustration, flat, drawing, anime style, low resolution, blurry subject, plastic materials, distorted anatomy, unrealistic textures."
-},
-{
-"序列号": 11,
-"画面内容简述": "拉丁裔女性穿着红色比基尼坐在热带瀑布下的浅水池中",
-"浏览量": 6460,
-"点赞量": 43,
-"作者": "@siennalovesai",
-"图片链接": "https://pbs.twimg.com/media/G8wAcLDWIAACrMZ.jpg",
-"推文中的原始 Prompt": "{\n  "metadata": {\n    "confidence_score": "high",\n    "image_type": "photograph",\n    "primary_purpose": "social media/travel/lifestyle"\n  },\n  "composition": {\n    "rule_applied": "center composition",\n    "aspect_ratio": "2:3",\n    "layout": "single subject, central vertical alignment",\n    "focal_points": [\n      "Subject in foreground center",\n      "Tropical waterfall aligned behind subject"\n    ],\n    "visual_hierarchy": "Eye starts at the face, moves down the body to the water, then follows the waterfall upward.",\n    "balance": "symmetric - subject and waterfall aligned on vertical axis"\n  },\n  "color_profile": {\n    "dominant_colors": [\n      { "color": "Sky Blue", "hex": "#87CEEB", "percentage": "35%", "role": "background" },\n      { "color": "Lush Green", "hex": "#45a247", "percentage": "20%", "role": "foliage" },\n      { "color": "Crimson Red", "hex": "#DC143C", "percentage": "5%", "role": "bikini fabric" },\n      { "color": "Bright White", "hex": "#FFFFFF", "percentage": "3%", "role": "bikini trim" },\n      { "color": "Medium Tan", "hex": "#CD853F", "percentage": "25%", "role": "skin tone and stone" }\n    ],\n    "color_palette": "triadic - blues, greens, reds",\n    "temperature": "warm",\n    "saturation": "high",\n    "contrast": "high"\n  },\n  "lighting": {\n    "type": "natural sunlight",\n    "source_count": "single source - high sun",\n    "direction": "top-down/slightly front-left",\n    "directionality": "highly directional",\n    "quality": "hard light",\n    "intensity": "bright/high-key",\n    "contrast_ratio": "high (sharp shadows under chin and torso)",\n    "mood": "vibrant/sunny",\n    "shadows": {\n      "type": "hard edges",\n      "density": "gray to deep tan",\n      "placement": "chin, bikini top, midsection",\n      "length": "short"\n    },\n    "highlights": {\n      "treatment": "preserved",\n      "placement": "shoulders, forehead, nose bridge, water surface"\n    },\n    "ambient_fill": "present from water and surroundings",\n    "light_temperature": "neutral to warm"\n  },\n  "technical_specs": {\n    "medium": "digital photography",\n    "style": "realistic",\n    "texture": "sharp/wet",\n    "sharpness": "tack sharp on subject, softer background",\n    "grain": "none/low",\n    "depth_of_field": "medium",\n    "perspective": "low angle"\n  },\n  "artistic_elements": {\n    "genre": "travel portrait",\n    "influences": ["Lifestyle photography", "Instagram travel aesthetic"],\n    "mood": "confident/tranquil",\n    "atmosphere": "tropical summer day",\n    "visual_style": "clean/vibrant"\n  },\n  "typography": {\n    "present": false,\n    "fonts": [],\n    "placement": "none",\n    "integration": "none"\n  },\n  "subject_analysis": {\n    "primary_subject": "Latina woman sitting in a shallow pool",\n    "positioning": "center",\n    "scale": "medium full shot",\n    "interaction": "isolated",\n    "facial_expression": {\n      "mouth": "slight closed smile",\n      "eyes": "direct relaxed gaze",\n      "eyebrows": "neutral",\n      "overall_emotion": "confident/alluring",\n      "authenticity": "posed"\n    },\n    "hair": {\n      "length": "shoulder-length",\n      "cut": "long layers",\n      "texture": "straight/wet",\n      "styling": "slicked back, tucked behind ears",\n      "part": "side part",\n      "volume": "flat due to wetness",\n      "details": "dark black, saturated with water"\n    },\n    "hands_and_gestures": {\n      "left_hand": "partially submerged, resting behind for support",\n      "right_hand": "resting behind, fingers spread",\n      "hand_tension": "natural/supportive",\n      "naturalness": "posed but structurally natural"\n    },\n    "body_positioning": {\n      "posture": "sitting/leaning back",\n      "angle": "facing camera",\n      "weight_distribution": "supported by hands",\n      "shoulders": "level/relaxed"\n    }\n  },\n  "background": {\n    "setting_type": "outdoor pool/cenote with waterfall",\n    "spatial_depth": "deep - water foreground, subject midground, waterfall background",\n    "elements_detailed": [\n      {\n        "item": "Waterfall",\n        "position": "center background",\n        "size": "dominant vertical",\n        "specific_features": "clear cascading water, lush greenery"\n      },\n      {\n        "item": "Stone wall",\n        "position": "midground",\n        "size": "medium",\n        "specific_features": "irregular light-colored stones"\n      }\n    ],\n    "wall_surface": {\n      "material": "stone/rubble",\n      "texture": "rough",\n      "finish": "matte",\n      "color": "off-white/tan",\n      "features": "visible mortar and stacked stones"\n    },\n    "floor_surface": {\n      "material": "submerged stone ledge",\n      "color": "tan/brown"\n    },\n    "objects_catalog": "bikini, sunglasses, belly piercing, leaf tattoo, waterfall, stone wall, trees, water, pool railing",\n    "background_treatment": "detailed with slight blur"\n  },\n  "generation_parameters": {\n    "prompts": [\n      "Low angle shot of a Latina woman with wet black hair in a crimson bikini with white trim, sitting in turquoise water with a tall waterfall centered behind her, clear blue sky, hard sunlight, vibrant travel photography.",\n      "Latina woman in red and white swimwear, wet hair, sunny tropical resort with waterfall background, sharp focus, cinematic lighting."\n    ],\n    "keywords": [\n      "waterfall",\n      "wet look hair",\n      "tropical pool",\n      "crimson bikini",\n      "low angle",\n      "summer travel",\n      "hard lighting"\n    ],\n    "technical_settings": "f/4.0, 1/1000s, ISO 100, 24mm wide angle",\n    "post_processing": "vibrance boost, high contrast, clarity enhancement"\n  }\n}"
-},
-{
-"序列号": 12,
-"画面内容简述": "年轻女性拿着手机自拍，银灰色双马尾，紫色LED灯背景",
-"浏览量": 5068,
-"点赞量": 88,
-"作者": "@xmliisu",
-"图片链接": "https://pbs.twimg.com/media/G8uGICQXQAIK0d9.jpg",
-"推文中的原始 Prompt": "{\n  "image_generation_prompt": {\n    "subject": {\n      "demographics": "Young woman, fair skin, slim build",\n      "hair": {\n        "color": "Silver grey",\n        "style": "High pigtails, straight texture",\n        "details": "Bangs framing the forehead and sides of the face"\n      },\n      "face_and_makeup": {\n        "eyes": "Green/hazel eyes, heavy winged eyeliner, long lashes",\n        "expression": "Sultry gaze, slightly parted lips",\n        "action": "Right index finger touching lower lip or corner of mouth"\n      }\n    },\n    "attire": {\n      "clothing": "Sleeveless corset-style top with deep scoop neckline and visible hook-and-eye closures, partially visible skirt or shorts",\n      "accessories": "Silver cross pendant necklace on a thin chain"\n    },\n    "pose": {\n      "type": "High-angle selfie",\n      "body_position": "Arm extended toward camera, body angled slightly"\n    },\n    "setting": {\n      "location": "Bedroom",\n      "background_elements": [\n        "Bed headboard (tufted fabric)",\n        "Large white chunky-knit pillow/cushion",\n        "White bedding"\n      ],\n      "ambient_lighting": "Purple LED strip light running horizontally behind the headboard",\n      "atmosphere": "Dimly lit room with colored accent lighting"\n    },\n    "style_and_technical": {\n      "aesthetic": [\n        "E-girl",\n        "Y2K grunge",\n        "2000s digital aesthetic"\n      ],\n      "lighting_technique": "Direct on-camera flash, harsh high-contrast lighting on subject against darker background",\n      "camera_settings": {\n        "angle": "High-angle wide selfie",\n        "distortion": "Slight wide-angle distortion",\n        "color_profile": "Full color, natural color rendering with vibrant neon purple accent"\n      },\n      "aspect_ratio": "3:4"\n    }\n  }\n}"
-}
+            {
+                "序列号": 1,
+                "画面内容简述": "手机拍摄 3D 弹出效果：金发女性伸出屏幕",
+                "浏览量": 51331,
+                "点赞量": 364,
+                "作者": "@YaseenK7212",
+                "图片链接": "https://pbs.twimg.com/media/G8wJJJcWMAAjTK2.jpg",
+                "推文中的原始 Prompt": `Composite Hyper-Realistic POV, concept: OOTD Breakdown / Smartphone Pop-out Illusion. Subject: Caucasian female, 20-25. 3D Pop-out effect: Upper body emerges from screen, legs remain inside UI.`
+            },
+            {
+                "序列号": 2,
+                "画面内容简述": "白色西装搭配酒红色泳衣，硬光人像",
+                "浏览量": 29333,
+                "点赞量": 366,
+                "作者": "@YaseenK7212",
+                "图片链接": "https://pbs.twimg.com/media/G8xHjjdWMAA0r7y.jpg",
+                "推文中的原始 Prompt": `Tailored Pantsuit with Reveal, Matching Blazer and Trouser Set in Stark White, Deep Maroon Bikini Top. Direct Sunlight (Hard Light), high contrast.`
+            },
+            {
+                "序列号": 3,
+                "画面内容简述": "红发女性九宫格拼图：化妆与耳环细节",
+                "浏览量": 27639,
+                "点赞量": 621,
+                "作者": "@xmliisu",
+                "图片链接": "https://pbs.twimg.com/media/G8wGrKjXsAAgrAb.jpg",
+                "推文中的原始 Prompt": `Collage 3x3 Grid. Young woman with vibrant red hair, luxury interior. Jewelry focus on gold sunburst dangle earrings. Mix of natural and vanity lighting.`
+            },
+            {
+                "序列号": 4,
+                "画面内容简述": "豹纹连体衣镜子自拍，背部镂空设计",
+                "浏览量": 17989,
+                "点赞量": 239,
+                "作者": "@YaseenK7212",
+                "图片链接": "https://pbs.twimg.com/media/G8yitvUWYAE4YXl.jpg",
+                "推文中的原始 Prompt": `Mirror selfie, female, blonde curly hair. Jumpsuit with brown leopard print, backless scoop design. Indoor setting with gold shelving unit.`
+            },
+            {
+                "序列号": 5,
+                "画面内容简述": "同 序列号1 (3D 弹出效果变体)",
+                "浏览量": 15235,
+                "点赞量": 178,
+                "作者": "@miilesus",
+                "图片链接": "https://pbs.twimg.com/media/G8ygHcAXwAA9zb4.jpg",
+                "推文中的原始 Prompt": `Composite Hyper-Realistic POV, 3D Pop-out effect, smartphone interface, Parisian Park Autumn background.`
+            },
+            {
+                "序列号": 6,
+                "画面内容简述": "沙滩热带比基尼自拍，阳光直射效果",
+                "浏览量": 14358,
+                "点赞量": 365,
+                "作者": "@siennalovesai",
+                "图片链接": "https://pbs.twimg.com/media/G8v09xhWEAAgrL1.jpg",
+                "推文中的原始 Prompt": `Beach selfie, 24mm lens, bright sunlight. Subject: curvy Latina, tropical print bikini, beach waves hair, ocean waves background.`
+            },
+            {
+                "序列号": 7,
+                "画面内容简述": "俯视角度躺在沙滩椅，怀旧闪光灯风格",
+                "浏览量": 12034,
+                "点赞量": 277,
+                "作者": "@Just_sharon7",
+                "图片链接": "https://pbs.twimg.com/media/G8vvGbsW8AAAOlY.jpg",
+                "推文中的原始 Prompt": `High-angle bird's-eye view, upside-down portrait on beach chair at night. Flash photography, white spaghetti-strap bikini.`
+            },
+            {
+                "序列号": 8,
+                "画面内容简述": "悬崖露台日落，优雅黑色波点裙",
+                "浏览量": 10791,
+                "点赞量": 184,
+                "作者": "@xmliisu",
+                "图片链接": "https://pbs.twimg.com/media/G8yRE4PWcAEkpXt.jpg",
+                "推文中的原始 Prompt": `Candid-style photograph, golden hour sunset, cliffside terrace. Young woman in black polka-dot dress, Mediterranean vibe.`
+            },
+            {
+                "序列号": 9,
+                "画面内容简述": "室内楼梯自拍，深蓝帽衫与长袜",
+                "浏览量": 7625,
+                "点赞量": 130,
+                "作者": "@lexx_aura",
+                "图片链接": "https://pbs.twimg.com/media/G8xn2c8XQAAmWsG.jpg",
+                "推文中的原始 Prompt": `Indoor staircase, cozy atmosphere. Oversized navy blue hoodie, white crew socks. Sharp focus on face, bokeh on foreground feet.`
+            },
+            {
+                "序列号": 10,
+                "画面内容简述": "微观摄影：精灵球内的迷你皮卡丘森林",
+                "浏览量": 6727,
+                "点赞量": 185,
+                "作者": "@Arminn_Ai",
+                "图片链接": "https://pbs.twimg.com/media/G8yEUHXWAAAqMRr.jpg",
+                "推文中的原始 Prompt": `Macro shot, miniature diorama inside an open sphere. Tiny photorealistic Pikachu in a detailed forest world. Unreal Engine 5 render.`
+            },
+            {
+                "序列号": 11,
+                "画面内容简述": "热带瀑布下的浅滩，红色比基尼",
+                "浏览量": 6460,
+                "点赞量": 43,
+                "作者": "@siennalovesai",
+                "图片链接": "https://pbs.twimg.com/media/G8wAcLDWIAACrMZ.jpg",
+                "推文中的原始 Prompt": `Low angle shot, Latina woman in crimson bikini, turquoise water with tall waterfall background. Vibrant travel photography.`
+            },
+            {
+                "序列号": 12,
+                "画面内容简述": "卧室紫色氛围灯，银灰双马尾 E-girl 风格",
+                "浏览量": 5068,
+                "点赞量": 88,
+                "作者": "@xmliisu",
+                "图片链接": "https://pbs.twimg.com/media/G8uGICQXQAIK0d9.jpg",
+                "推文中的原始 Prompt": `High-angle selfie, silver grey pigtails, purple LED accent lighting. Y2K grunge aesthetic, direct on-camera flash.`
+            }
         ];
-        // ------------------------------
 
         function render() {
             const container = document.getElementById('gallery');
-            const status = document.getElementById('status');
-            
-            try {
-                if (!rawData || rawData.length === 0) {
-                    status.innerText = "暂无数据，请检查 JSON 粘贴是否正确";
-                    return;
-                }
-
-                container.innerHTML = rawData.map((item) => `
-                    <div class="prompt-card p-6 flex flex-col md:flex-row gap-6">
-                        <div class="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full font-bold shrink-0">
-                            ${item["序列号"] || '0'}
-                        </div>
-                        <img src="${item["图片链接"]}" class="w-full md:w-48 h-48 object-cover rounded-lg bg-gray-800 shadow-lg" onerror="this.src='https://placehold.co/400x400?text=Image+Error'">
-                        <div class="flex-1">
-                            <h3 class="text-xl font-bold text-white mb-2">${item["画面内容简述"] || '无标题'}</h3>
-                            <div class="bg-gray-900 p-4 rounded-lg border border-gray-800 mb-4 text-sm text-gray-300 font-mono">
-                                ${item["推文中的原始 Prompt"] || '无 Prompt'}
+            container.innerHTML = rawData.map((item, index) => {
+                const hotRatio = ((item["点赞量"] / item["浏览量"]) * 100).toFixed(1);
+                return `
+                <div class="prompt-card p-6 flex flex-col md:flex-row gap-8">
+                    <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 bg-blue-600/20 text-blue-400 rounded-full font-bold text-xl border border-blue-600/30">
+                        #${item["序列号"]}
+                    </div>
+                    
+                    <div class="relative group flex-shrink-0">
+                        <img src="${item["图片链接"]}" class="w-full md:w-64 h-64 object-cover rounded-xl shadow-2xl bg-gray-800 border border-gray-700">
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold text-white leading-tight">${item["画面内容简述"]}</h3>
+                                <div class="text-right">
+                                    <div class="text-blue-400 font-bold text-xl">${(item["浏览量"]/1000).toFixed(1)}k <span class="text-xs font-normal text-gray-500">VIEWS</span></div>
+                                    <div class="text-xs text-gray-500 mt-1">❤️ ${item["点赞量"]} LIKES | 🎯 ${hotRatio}%</div>
+                                </div>
                             </div>
-                            <div class="text-xs text-gray-500">
-                                浏览: ${item["浏览量"]} | 点赞: ${item["点赞量"]} | 作者: ${item["作者"]}
+                            
+                            <p class="text-gray-400 text-sm mb-4 italic">BY ${item["作者"]}</p>
+                            
+                            <div class="bg-black/40 p-4 rounded-lg border border-gray-800 relative group min-h-[100px]">
+                                <p class="text-xs text-gray-500 uppercase mb-2 tracking-widest">Original Prompt</p>
+                                <p id="p-${index}" class="text-sm text-gray-300 leading-relaxed font-mono">${item["推文中的原始 Prompt"]}</p>
+                                <button onclick="copyText('p-${index}')" class="copy-btn absolute top-3 right-3 text-xs text-gray-400 px-3 py-1 rounded-md opacity-0 group-hover:opacity-100">复制</button>
                             </div>
                         </div>
                     </div>
-                `).join('');
-                status.innerText = "数据更新成功！";
-            } catch (e) {
-                console.error(e);
-                status.innerHTML = "<span style='color:red'>代码报错了！请检查 JSON 格式。错误信息：" + e.message + "</span>";
-            }
+                </div>
+                `;
+            }).join('');
         }
 
-        // 页面加载完立即执行
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text);
+            const btn = event.target;
+            btn.innerText = "已复制！";
+            setTimeout(() => btn.innerText = "复制", 2000);
+        }
+
         window.onload = render;
     </script>
 </body>
